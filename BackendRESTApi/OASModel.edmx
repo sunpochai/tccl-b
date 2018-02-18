@@ -1,0 +1,531 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="OASModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="cf_delegate">
+          <Key>
+            <PropertyRef Name="ad_user" />
+          </Key>
+          <Property Name="ad_user" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ad_fullname" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="delegate_to_aduser" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="delegate_to_adfullname" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="start_date" Type="datetime" Nullable="false" />
+          <Property Name="end_date" Type="datetime" Nullable="false" />
+          <Property Name="create_user" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="create_username" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="create_datetime" Type="datetime" Nullable="false" />
+          <Property Name="update_user" Type="nvarchar" MaxLength="100" />
+          <Property Name="update_username" Type="nvarchar" MaxLength="255" />
+          <Property Name="update_datetime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="cf_reviewer">
+          <Key>
+            <PropertyRef Name="cfr_id" />
+          </Key>
+          <Property Name="cfr_id" Type="int" Nullable="false" />
+          <Property Name="saf_ref_code" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="reference_type" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="ad_user" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ad_fullname" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="create_user" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="create_username" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="create_datetime" Type="datetime" Nullable="false" />
+          <Property Name="update_user" Type="nvarchar" MaxLength="100" />
+          <Property Name="update_username" Type="nvarchar" MaxLength="255" />
+          <Property Name="update_datetime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="cf_route">
+          <Key>
+            <PropertyRef Name="route_id" />
+          </Key>
+          <Property Name="route_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="route_name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="route_type" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="doc_type" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="account_type" Type="nvarchar" MaxLength="15" />
+          <Property Name="price_over_pr_flag" Type="nchar" MaxLength="1" />
+          <Property Name="minimum_value" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="maximum_value" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="route_status" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="create_user" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="create_username" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="create_datetime" Type="datetime" Nullable="false" />
+          <Property Name="update_user" Type="nvarchar" MaxLength="100" />
+          <Property Name="update_username" Type="nvarchar" MaxLength="255" />
+          <Property Name="update_datetime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="cf_route_detail">
+          <Key>
+            <PropertyRef Name="route_d_id" />
+          </Key>
+          <Property Name="route_d_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="route_id" Type="int" Nullable="false" />
+          <Property Name="route_level" Type="int" />
+          <Property Name="ad_user" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ad_fullname" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="create_user" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="create_username" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="create_datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ms_company">
+          <Key>
+            <PropertyRef Name="comp_code" />
+          </Key>
+          <Property Name="comp_code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="comp_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="create_user" Type="nvarchar" MaxLength="100" />
+          <Property Name="create_username" Type="nvarchar" MaxLength="255" />
+          <Property Name="create_datetime" Type="datetime" />
+          <Property Name="update_user" Type="nvarchar" MaxLength="100" />
+          <Property Name="update_username" Type="nvarchar" MaxLength="255" />
+          <Property Name="update_datetime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ms_doctype">
+          <Key>
+            <PropertyRef Name="doc_type_code" />
+          </Key>
+          <Property Name="doc_type_code" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="doc_type_desc" Type="nvarchar" MaxLength="255" />
+          <Property Name="create_user" Type="nvarchar" MaxLength="100" />
+          <Property Name="create_username" Type="nvarchar" MaxLength="255" />
+          <Property Name="create_datetime" Type="datetime" />
+          <Property Name="update_user" Type="nvarchar" MaxLength="100" />
+          <Property Name="update_username" Type="nvarchar" MaxLength="255" />
+          <Property Name="update_datetime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ms_plant">
+          <Key>
+            <PropertyRef Name="plant_code" />
+          </Key>
+          <Property Name="plant_code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="plant_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="comp_code" Type="nvarchar" MaxLength="50" />
+          <Property Name="create_user" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="create_username" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="create_datetime" Type="datetime" Nullable="false" />
+          <Property Name="update_user" Type="nvarchar" MaxLength="100" />
+          <Property Name="update_username" Type="nvarchar" MaxLength="255" />
+          <Property Name="update_datetime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ms_tracking">
+          <Key>
+            <PropertyRef Name="tracking_code" />
+          </Key>
+          <Property Name="tracking_code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="tracking_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="comp_code" Type="nvarchar" MaxLength="50" />
+          <Property Name="create_user" Type="nvarchar" MaxLength="100" />
+          <Property Name="create_username" Type="nvarchar" MaxLength="255" />
+          <Property Name="create_datetime" Type="datetime" />
+          <Property Name="update_user" Type="nvarchar" MaxLength="100" />
+          <Property Name="update_username" Type="nvarchar" MaxLength="255" />
+          <Property Name="update_datetime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="sys_config">
+          <Key>
+            <PropertyRef Name="sys_c_id" />
+          </Key>
+          <Property Name="sys_c_id" Type="int" Nullable="false" />
+          <Property Name="config_type" Type="nvarchar" MaxLength="20" />
+          <Property Name="config_seq" Type="int" />
+          <Property Name="config_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="config_value" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_CF_Route_MS_DocType">
+          <End Role="ms_doctype" Type="Self.ms_doctype" Multiplicity="1" />
+          <End Role="cf_route" Type="Self.cf_route" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ms_doctype">
+              <PropertyRef Name="doc_type_code" />
+            </Principal>
+            <Dependent Role="cf_route">
+              <PropertyRef Name="doc_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CF_RouteDetail_CF_Route">
+          <End Role="cf_route" Type="Self.cf_route" Multiplicity="1" />
+          <End Role="cf_route_detail" Type="Self.cf_route_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cf_route">
+              <PropertyRef Name="route_id" />
+            </Principal>
+            <Dependent Role="cf_route_detail">
+              <PropertyRef Name="route_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OASModelStoreContainer">
+          <EntitySet Name="cf_delegate" EntityType="Self.cf_delegate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cf_reviewer" EntityType="Self.cf_reviewer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cf_route" EntityType="Self.cf_route" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cf_route_detail" EntityType="Self.cf_route_detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ms_company" EntityType="Self.ms_company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ms_doctype" EntityType="Self.ms_doctype" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ms_plant" EntityType="Self.ms_plant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ms_tracking" EntityType="Self.ms_tracking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sys_config" EntityType="Self.sys_config" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CF_Route_MS_DocType" Association="Self.FK_CF_Route_MS_DocType">
+            <End Role="ms_doctype" EntitySet="ms_doctype" />
+            <End Role="cf_route" EntitySet="cf_route" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CF_RouteDetail_CF_Route" Association="Self.FK_CF_RouteDetail_CF_Route">
+            <End Role="cf_route" EntitySet="cf_route" />
+            <End Role="cf_route_detail" EntitySet="cf_route_detail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OASModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="cf_delegate">
+          <Key>
+            <PropertyRef Name="ad_user" />
+          </Key>
+          <Property Name="ad_user" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ad_fullname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="delegate_to_aduser" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="delegate_to_adfullname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="start_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="end_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="create_user" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="create_username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="create_datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="update_user" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="update_username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="update_datetime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="cf_reviewer">
+          <Key>
+            <PropertyRef Name="cfr_id" />
+          </Key>
+          <Property Name="cfr_id" Type="Int32" Nullable="false" />
+          <Property Name="saf_ref_code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="reference_type" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ad_user" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ad_fullname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="create_user" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="create_username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="create_datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="update_user" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="update_username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="update_datetime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="cf_route">
+          <Key>
+            <PropertyRef Name="route_id" />
+          </Key>
+          <Property Name="route_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="route_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="route_type" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="doc_type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="account_type" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="price_over_pr_flag" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="minimum_value" Type="Decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="maximum_value" Type="Decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="route_status" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="create_user" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="create_username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="create_datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="update_user" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="update_username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="update_datetime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ms_doctype" Relationship="Self.FK_CF_Route_MS_DocType" FromRole="cf_route" ToRole="ms_doctype" />
+          <NavigationProperty Name="cf_route_detail" Relationship="Self.FK_CF_RouteDetail_CF_Route" FromRole="cf_route" ToRole="cf_route_detail" />
+        </EntityType>
+        <EntityType Name="cf_route_detail">
+          <Key>
+            <PropertyRef Name="route_d_id" />
+          </Key>
+          <Property Name="route_d_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="route_id" Type="Int32" Nullable="false" />
+          <Property Name="route_level" Type="Int32" />
+          <Property Name="ad_user" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ad_fullname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="create_user" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="create_username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="create_datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="cf_route" Relationship="Self.FK_CF_RouteDetail_CF_Route" FromRole="cf_route_detail" ToRole="cf_route" />
+        </EntityType>
+        <EntityType Name="ms_company">
+          <Key>
+            <PropertyRef Name="comp_code" />
+          </Key>
+          <Property Name="comp_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="comp_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="create_user" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="create_username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="create_datetime" Type="DateTime" Precision="3" />
+          <Property Name="update_user" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="update_username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="update_datetime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ms_doctype">
+          <Key>
+            <PropertyRef Name="doc_type_code" />
+          </Key>
+          <Property Name="doc_type_code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="doc_type_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="create_user" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="create_username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="create_datetime" Type="DateTime" Precision="3" />
+          <Property Name="update_user" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="update_username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="update_datetime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="cf_route" Relationship="Self.FK_CF_Route_MS_DocType" FromRole="ms_doctype" ToRole="cf_route" />
+        </EntityType>
+        <EntityType Name="ms_plant">
+          <Key>
+            <PropertyRef Name="plant_code" />
+          </Key>
+          <Property Name="plant_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="plant_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="comp_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="create_user" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="create_username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="create_datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="update_user" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="update_username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="update_datetime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ms_tracking">
+          <Key>
+            <PropertyRef Name="tracking_code" />
+          </Key>
+          <Property Name="tracking_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tracking_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="comp_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="create_user" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="create_username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="create_datetime" Type="DateTime" Precision="3" />
+          <Property Name="update_user" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="update_username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="update_datetime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="sys_config">
+          <Key>
+            <PropertyRef Name="sys_c_id" />
+          </Key>
+          <Property Name="sys_c_id" Type="Int32" Nullable="false" />
+          <Property Name="config_type" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="config_seq" Type="Int32" />
+          <Property Name="config_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="config_value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_CF_Route_MS_DocType">
+          <End Role="ms_doctype" Type="Self.ms_doctype" Multiplicity="1" />
+          <End Role="cf_route" Type="Self.cf_route" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ms_doctype">
+              <PropertyRef Name="doc_type_code" />
+            </Principal>
+            <Dependent Role="cf_route">
+              <PropertyRef Name="doc_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CF_RouteDetail_CF_Route">
+          <End Role="cf_route" Type="Self.cf_route" Multiplicity="1" />
+          <End Role="cf_route_detail" Type="Self.cf_route_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cf_route">
+              <PropertyRef Name="route_id" />
+            </Principal>
+            <Dependent Role="cf_route_detail">
+              <PropertyRef Name="route_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OASEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cf_delegate" EntityType="Self.cf_delegate" />
+          <EntitySet Name="cf_reviewer" EntityType="Self.cf_reviewer" />
+          <EntitySet Name="cf_route" EntityType="Self.cf_route" />
+          <EntitySet Name="cf_route_detail" EntityType="Self.cf_route_detail" />
+          <EntitySet Name="ms_company" EntityType="Self.ms_company" />
+          <EntitySet Name="ms_doctype" EntityType="Self.ms_doctype" />
+          <EntitySet Name="ms_plant" EntityType="Self.ms_plant" />
+          <EntitySet Name="ms_tracking" EntityType="Self.ms_tracking" />
+          <EntitySet Name="sys_config" EntityType="Self.sys_config" />
+          <AssociationSet Name="FK_CF_Route_MS_DocType" Association="Self.FK_CF_Route_MS_DocType">
+            <End Role="ms_doctype" EntitySet="ms_doctype" />
+            <End Role="cf_route" EntitySet="cf_route" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CF_RouteDetail_CF_Route" Association="Self.FK_CF_RouteDetail_CF_Route">
+            <End Role="cf_route" EntitySet="cf_route" />
+            <End Role="cf_route_detail" EntitySet="cf_route_detail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OASModelStoreContainer" CdmEntityContainer="OASEntities">
+          <EntitySetMapping Name="cf_delegate">
+            <EntityTypeMapping TypeName="OASModel.cf_delegate">
+              <MappingFragment StoreEntitySet="cf_delegate">
+                <ScalarProperty Name="ad_user" ColumnName="ad_user" />
+                <ScalarProperty Name="ad_fullname" ColumnName="ad_fullname" />
+                <ScalarProperty Name="delegate_to_aduser" ColumnName="delegate_to_aduser" />
+                <ScalarProperty Name="delegate_to_adfullname" ColumnName="delegate_to_adfullname" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="create_user" ColumnName="create_user" />
+                <ScalarProperty Name="create_username" ColumnName="create_username" />
+                <ScalarProperty Name="create_datetime" ColumnName="create_datetime" />
+                <ScalarProperty Name="update_user" ColumnName="update_user" />
+                <ScalarProperty Name="update_username" ColumnName="update_username" />
+                <ScalarProperty Name="update_datetime" ColumnName="update_datetime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cf_reviewer">
+            <EntityTypeMapping TypeName="OASModel.cf_reviewer">
+              <MappingFragment StoreEntitySet="cf_reviewer">
+                <ScalarProperty Name="cfr_id" ColumnName="cfr_id" />
+                <ScalarProperty Name="saf_ref_code" ColumnName="saf_ref_code" />
+                <ScalarProperty Name="reference_type" ColumnName="reference_type" />
+                <ScalarProperty Name="ad_user" ColumnName="ad_user" />
+                <ScalarProperty Name="ad_fullname" ColumnName="ad_fullname" />
+                <ScalarProperty Name="create_user" ColumnName="create_user" />
+                <ScalarProperty Name="create_username" ColumnName="create_username" />
+                <ScalarProperty Name="create_datetime" ColumnName="create_datetime" />
+                <ScalarProperty Name="update_user" ColumnName="update_user" />
+                <ScalarProperty Name="update_username" ColumnName="update_username" />
+                <ScalarProperty Name="update_datetime" ColumnName="update_datetime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cf_route">
+            <EntityTypeMapping TypeName="OASModel.cf_route">
+              <MappingFragment StoreEntitySet="cf_route">
+                <ScalarProperty Name="route_id" ColumnName="route_id" />
+                <ScalarProperty Name="route_name" ColumnName="route_name" />
+                <ScalarProperty Name="route_type" ColumnName="route_type" />
+                <ScalarProperty Name="doc_type" ColumnName="doc_type" />
+                <ScalarProperty Name="account_type" ColumnName="account_type" />
+                <ScalarProperty Name="price_over_pr_flag" ColumnName="price_over_pr_flag" />
+                <ScalarProperty Name="minimum_value" ColumnName="minimum_value" />
+                <ScalarProperty Name="maximum_value" ColumnName="maximum_value" />
+                <ScalarProperty Name="route_status" ColumnName="route_status" />
+                <ScalarProperty Name="create_user" ColumnName="create_user" />
+                <ScalarProperty Name="create_username" ColumnName="create_username" />
+                <ScalarProperty Name="create_datetime" ColumnName="create_datetime" />
+                <ScalarProperty Name="update_user" ColumnName="update_user" />
+                <ScalarProperty Name="update_username" ColumnName="update_username" />
+                <ScalarProperty Name="update_datetime" ColumnName="update_datetime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cf_route_detail">
+            <EntityTypeMapping TypeName="OASModel.cf_route_detail">
+              <MappingFragment StoreEntitySet="cf_route_detail">
+                <ScalarProperty Name="route_d_id" ColumnName="route_d_id" />
+                <ScalarProperty Name="route_id" ColumnName="route_id" />
+                <ScalarProperty Name="route_level" ColumnName="route_level" />
+                <ScalarProperty Name="ad_user" ColumnName="ad_user" />
+                <ScalarProperty Name="ad_fullname" ColumnName="ad_fullname" />
+                <ScalarProperty Name="create_user" ColumnName="create_user" />
+                <ScalarProperty Name="create_username" ColumnName="create_username" />
+                <ScalarProperty Name="create_datetime" ColumnName="create_datetime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ms_company">
+            <EntityTypeMapping TypeName="OASModel.ms_company">
+              <MappingFragment StoreEntitySet="ms_company">
+                <ScalarProperty Name="comp_code" ColumnName="comp_code" />
+                <ScalarProperty Name="comp_name" ColumnName="comp_name" />
+                <ScalarProperty Name="create_user" ColumnName="create_user" />
+                <ScalarProperty Name="create_username" ColumnName="create_username" />
+                <ScalarProperty Name="create_datetime" ColumnName="create_datetime" />
+                <ScalarProperty Name="update_user" ColumnName="update_user" />
+                <ScalarProperty Name="update_username" ColumnName="update_username" />
+                <ScalarProperty Name="update_datetime" ColumnName="update_datetime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ms_doctype">
+            <EntityTypeMapping TypeName="OASModel.ms_doctype">
+              <MappingFragment StoreEntitySet="ms_doctype">
+                <ScalarProperty Name="doc_type_code" ColumnName="doc_type_code" />
+                <ScalarProperty Name="doc_type_desc" ColumnName="doc_type_desc" />
+                <ScalarProperty Name="create_user" ColumnName="create_user" />
+                <ScalarProperty Name="create_username" ColumnName="create_username" />
+                <ScalarProperty Name="create_datetime" ColumnName="create_datetime" />
+                <ScalarProperty Name="update_user" ColumnName="update_user" />
+                <ScalarProperty Name="update_username" ColumnName="update_username" />
+                <ScalarProperty Name="update_datetime" ColumnName="update_datetime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ms_plant">
+            <EntityTypeMapping TypeName="OASModel.ms_plant">
+              <MappingFragment StoreEntitySet="ms_plant">
+                <ScalarProperty Name="plant_code" ColumnName="plant_code" />
+                <ScalarProperty Name="plant_name" ColumnName="plant_name" />
+                <ScalarProperty Name="comp_code" ColumnName="comp_code" />
+                <ScalarProperty Name="create_user" ColumnName="create_user" />
+                <ScalarProperty Name="create_username" ColumnName="create_username" />
+                <ScalarProperty Name="create_datetime" ColumnName="create_datetime" />
+                <ScalarProperty Name="update_user" ColumnName="update_user" />
+                <ScalarProperty Name="update_username" ColumnName="update_username" />
+                <ScalarProperty Name="update_datetime" ColumnName="update_datetime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ms_tracking">
+            <EntityTypeMapping TypeName="OASModel.ms_tracking">
+              <MappingFragment StoreEntitySet="ms_tracking">
+                <ScalarProperty Name="tracking_code" ColumnName="tracking_code" />
+                <ScalarProperty Name="tracking_name" ColumnName="tracking_name" />
+                <ScalarProperty Name="comp_code" ColumnName="comp_code" />
+                <ScalarProperty Name="create_user" ColumnName="create_user" />
+                <ScalarProperty Name="create_username" ColumnName="create_username" />
+                <ScalarProperty Name="create_datetime" ColumnName="create_datetime" />
+                <ScalarProperty Name="update_user" ColumnName="update_user" />
+                <ScalarProperty Name="update_username" ColumnName="update_username" />
+                <ScalarProperty Name="update_datetime" ColumnName="update_datetime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sys_config">
+            <EntityTypeMapping TypeName="OASModel.sys_config">
+              <MappingFragment StoreEntitySet="sys_config">
+                <ScalarProperty Name="sys_c_id" ColumnName="sys_c_id" />
+                <ScalarProperty Name="config_type" ColumnName="config_type" />
+                <ScalarProperty Name="config_seq" ColumnName="config_seq" />
+                <ScalarProperty Name="config_name" ColumnName="config_name" />
+                <ScalarProperty Name="config_value" ColumnName="config_value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

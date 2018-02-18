@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="OASModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="MS_Company">
+          <Key>
+            <PropertyRef Name="CompCode" />
+          </Key>
+          <Property Name="CompCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CompName" Type="nvarchar" MaxLength="255" />
+          <Property Name="CreateUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateDatetime" Type="datetime" />
+          <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateDatetime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MS_DocType">
+          <Key>
+            <PropertyRef Name="DocTypeCode" />
+          </Key>
+          <Property Name="DocTypeCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DocTypeDesc" Type="nvarchar" MaxLength="255" />
+          <Property Name="CreateUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateDatetime" Type="datetime" />
+          <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateDatetime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MS_Tracking">
+          <Key>
+            <PropertyRef Name="TrackingCode" />
+          </Key>
+          <Property Name="TrackingCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TrackingName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateDatetime" Type="datetime" />
+          <Property Name="UpdateUer" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateDatetime" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="OASModelStoreContainer">
+          <EntitySet Name="MS_Company" EntityType="Self.MS_Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MS_DocType" EntityType="Self.MS_DocType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MS_Tracking" EntityType="Self.MS_Tracking" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OASModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="MS_Company">
+          <Key>
+            <PropertyRef Name="CompCode" />
+          </Key>
+          <Property Name="CompCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CreateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDatetime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDatetime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="MS_DocType">
+          <Key>
+            <PropertyRef Name="DocTypeCode" />
+          </Key>
+          <Property Name="DocTypeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DocTypeDesc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CreateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDatetime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDatetime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="MS_Tracking">
+          <Key>
+            <PropertyRef Name="TrackingCode" />
+          </Key>
+          <Property Name="TrackingCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TrackingName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDatetime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDatetime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="OASEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MS_Company" EntityType="Self.MS_Company" />
+          <EntitySet Name="MS_DocType" EntityType="Self.MS_DocType" />
+          <EntitySet Name="MS_Tracking" EntityType="Self.MS_Tracking" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OASModelStoreContainer" CdmEntityContainer="OASEntities">
+          <EntitySetMapping Name="MS_Company">
+            <EntityTypeMapping TypeName="OASModel.MS_Company">
+              <MappingFragment StoreEntitySet="MS_Company">
+                <ScalarProperty Name="CompCode" ColumnName="CompCode" />
+                <ScalarProperty Name="CompName" ColumnName="CompName" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDatetime" ColumnName="CreateDatetime" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateDatetime" ColumnName="UpdateDatetime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MS_DocType">
+            <EntityTypeMapping TypeName="OASModel.MS_DocType">
+              <MappingFragment StoreEntitySet="MS_DocType">
+                <ScalarProperty Name="DocTypeCode" ColumnName="DocTypeCode" />
+                <ScalarProperty Name="DocTypeDesc" ColumnName="DocTypeDesc" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDatetime" ColumnName="CreateDatetime" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateDatetime" ColumnName="UpdateDatetime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MS_Tracking">
+            <EntityTypeMapping TypeName="OASModel.MS_Tracking">
+              <MappingFragment StoreEntitySet="MS_Tracking">
+                <ScalarProperty Name="TrackingCode" ColumnName="TrackingCode" />
+                <ScalarProperty Name="TrackingName" ColumnName="TrackingName" />
+                <ScalarProperty Name="CompCode" ColumnName="CompCode" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDatetime" ColumnName="CreateDatetime" />
+                <ScalarProperty Name="UpdateUer" ColumnName="UpdateUer" />
+                <ScalarProperty Name="UpdateDatetime" ColumnName="UpdateDatetime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

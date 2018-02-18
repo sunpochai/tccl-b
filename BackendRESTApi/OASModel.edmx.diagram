@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e3b4a40fab1343e39966c4369c44c45f" Name="Diagram1">
+        <EntityTypeShape EntityType="OASModel.cf_delegate" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OASModel.cf_reviewer" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OASModel.cf_route" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="OASModel.cf_route_detail" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OASModel.ms_company" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OASModel.ms_doctype" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OASModel.ms_plant" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OASModel.ms_tracking" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OASModel.sys_config" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="OASModel.FK_CF_Route_MS_DocType" ManuallyRouted="false" />
+        <AssociationConnector Association="OASModel.FK_CF_RouteDetail_CF_Route" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
